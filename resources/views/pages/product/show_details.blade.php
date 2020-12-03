@@ -4,7 +4,7 @@
 	<div class="product-details"><!--product-details-->
 		<div class="col-sm-5">
 			<div class="view-product">
-				<img src="{{URL::to('/public/uploads/product',$product->product_image)}}" alt="" />
+				<img src="{{URL::to('/uploads/product',$product->product_image)}}" alt="" />
 				<h3>ZOOM</h3>
 			</div>
 			<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -12,9 +12,9 @@
 				  <!-- Wrapper for slides -->
 				    <div class="carousel-inner">
 						<div class="item active">
-						  <a href=""><img src="{{asset('public/frontend/images/product-details/similar1.jpg')}}" alt=""></a>
-						  <a href=""><img src="{{asset('public/frontend/images/product-details/similar2.jpg')}}" alt=""></a>
-						  <a href=""><img src="{{asset('public/frontend/images/product-details/similar3.jpg')}}" alt=""></a>
+						  <a href=""><img src="{{asset('frontend/images/product-details/similar1.jpg')}}" alt=""></a>
+						  <a href=""><img src="{{asset('frontend/images/product-details/similar2.jpg')}}" alt=""></a>
+						  <a href=""><img src="{{asset('frontend/images/product-details/similar3.jpg')}}" alt=""></a>
 						</div>
 						{{-- <div class="item">
 						  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
@@ -34,10 +34,10 @@
 		</div>
 		<div class="col-sm-7">
 			<div class="product-information"><!--/product-information-->
-				<img src="{{URL::to('public/frontend/images/product-details/new.jpg')}}" class="newarrival" alt="" />
+				<img src="{{URL::to('frontend/images/product-details/new.jpg')}}" class="newarrival" alt="" />
 				<h2>{{$product->product_name}}</h2>
 				<p>Mã ID: {{$product->product_id}}</p>
-				<img src="{{URL::to('public/frontend/images/product-details/rating.png')}}" alt="" />
+				<img src="{{URL::to('frontend/images/product-details/rating.png')}}" alt="" />
 				<span>
 					<form action="{{URL::to('/add-to-cart')}}" method="post">
 						{{ csrf_field() }}
@@ -151,7 +151,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="{{URL::to('public/uploads/product/'.$relate->product_image)}}" height="200" width="200" alt="" />
+									<img src="{{URL::to('uploads/product/'.$relate->product_image)}}" height="200" width="200" alt="" />
 									<h2>{{number_format($relate->product_price)}} VNĐ</h2>
 									<p>{{$relate->product_name}}</p>
 									<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>

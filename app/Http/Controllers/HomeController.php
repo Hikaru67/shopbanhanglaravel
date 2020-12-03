@@ -14,9 +14,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
       //seo
-      $meta_desc = "hình phục vụ cuộc sống không để cuộc sống phục vụ thể hình. Là 1 gymer ngoài";
-      $meta_keywords  = "seto";
-      $meta_title = "Home | E-Shopper";
+      $meta_desc = "Sản phẩm công nghệ";
+      $meta_keywords  = "ShoppingAll4You";
+      $meta_title = "Home | ShoppingAll4You";
       $url_canonical = $request->url();
       //--seo
     	$category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
@@ -36,10 +36,14 @@ class HomeController extends Controller
       if($keywords==''){
         return Redirect('/');
       }
+      $meta_desc = "Tìm kiếm sản phẩm";
+      $meta_keywords  = $keywords;
+      $meta_title = "ShoppingAll4You";
+      $url_canonical = $request->url();
       $category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
       $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'asc')->get();
 
       $search_items = DB::table('tbl_product')->where('product_name', 'like', '%'.$keywords.'%')->get();
-      return view('pages.product.search')->with('category', $category_product)->with('brand', $brand_product)->with('search_items', $search_items);
+      return view('pages.product.search')->with('category', $category_product)->with('brand', $brand_product)->with('search_items', $search_items)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical);
     }
 }

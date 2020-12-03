@@ -13,7 +13,7 @@
         <div class="product-image-wrapper">
             <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" width="200" height="200" alt="" />
+                        <img src="{{URL::to('uploads/product/'.$product->product_image)}}" width="200" height="200" alt="" />
                         <h2>{{number_format($product->product_price).' VNĐ'}}</h2>
                         <p>{{$product->product_name}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
@@ -55,7 +55,7 @@
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
-                            <img src="{{URL::to('public/frontend/images/home/gallery1.jpg')}}" alt="" />
+                            <img src="{{URL::to('frontend/images/home/gallery1.jpg')}}" alt="" />
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -80,7 +80,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{('public/frontend/images/home/recommend1.jpg')}}" alt="" />
+                                <img src="{{('frontend/images/home/recommend1.jpg')}}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -95,7 +95,7 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{('public/frontend/images/home/recommend1.jpg')}}" alt="" />
+                                <img src="{{('frontend/images/home/recommend1.jpg')}}" alt="" />
                                 <h2>$56</h2>
                                 <p>Easy Polo Black Edition</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

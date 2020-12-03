@@ -6,23 +6,23 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Admin Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{asset('public/backend/images/icon/favicon.ico')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/metisMenu.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/slicknav.min.css')}}">
+    <link rel="shortcut icon" type="image/png" href="{{asset('backend/images/icon/favicon.ico')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/metisMenu.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/slicknav.min.css')}}">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
-    <link rel="stylesheet" href="{{asset('public/backend/css/typography.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/default-css.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/styles.css')}}">
-    <link rel="stylesheet" href="{{asset('public/backend/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/typography.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/default-css.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/css/responsive.css')}}">
     <link rel="alternate" href="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.2-dev/css/formValidation.min.css">
     <!-- modernizr css -->
-    <script src="{{asset('public/backend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{asset('backend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="#">
                     	<h3>ADMIN</h3>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                                 <ul class="collapse">
                                     <li><a href="{{URL::to('manage-order')}}">Quản lý đơn hàng</a></li>
                                 </ul>
-                            </li>
+                            {{-- </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Charts</span></a>
                                 <ul class="collapse">
@@ -171,7 +171,7 @@
                                     </li>
                                     <li><a href="#">Item level (1)</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>
@@ -214,14 +214,14 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Home</a></li>
                                 <li><span>Dashboard</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="{{asset('public/backend/images/author/avatar.png')}}" alt="avatar">
+                            <img class="avatar user-thumb" src="{{asset('backend/images/author/avatar.png')}}" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">
                             	<?php 
 									$name = Session::get('admin_name');
@@ -250,7 +250,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>© Copyright 2018. All right reserved. Template by <a href="#">Colorlib</a>.</p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -435,17 +435,17 @@
     </div>
     <!-- offset area end -->
     <!-- jquery latest version -->
-    <script src="{{asset('public/backend/js/vendor/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('backend/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <!-- bootstrap 4 js -->
-    <script src="{{asset('public/backend/js/popper.min.js')}}"></script>
-    <script src="{{asset('public/backend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('public/backend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('public/backend/js/metisMenu.min.js')}}"></script>
-    <script src="{{asset('public/backend/js/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('public/backend/js/jquery.slicknav.min.js')}}"></script>
+    <script src="{{asset('backend/js/popper.min.js')}}"></script>
+    <script src="{{asset('backend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('backend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('backend/js/metisMenu.min.js')}}"></script>
+    <script src="{{asset('backend/js/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{asset('backend/js/jquery.slicknav.min.js')}}"></script>
 
     <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <!-- start highcharts js -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- start zingchart js -->
@@ -453,16 +453,16 @@
     <script>
     zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
     ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script>
+    </script> --}}
     <!-- all line chart activation -->
-    <script src="{{asset('public/backend/js/line-chart.js')}}"></script>
+    <script src="{{asset('backend/js/line-chart.js')}}"></script>
     <!-- all pie chart -->
-    <script src="{{asset('public/backend/js/pie-chart.js')}}"></script>
+    <script src="{{asset('backend/js/pie-chart.js')}}"></script>
     <!-- others plugins -->
-    <script src="{{asset('public/backend/js/plugins.js')}}"></script>
-    <script src="{{asset('public/backend/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('backend/js/plugins.js')}}"></script>
+    <script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.2-dev/js/formValidation.min.js"></script>
-    {{-- <script src="{{asset('public/backend/js/formValidation.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('backend/js/formValidation.min.js')}}"></script> --}}
     <script type="text/javascript">
         $.validate({
 
@@ -473,7 +473,7 @@
         CKEDITOR.replace('ckeditor1');
         CKEDITOR.replace('ckeditor2');
     </script>
-    <script src="{{asset('public/backend/js/scripts.js')}}"></script>
+    <script src="{{asset('backend/js/scripts.js')}}"></script>
 </body>
 
 </html>
