@@ -8,8 +8,8 @@ class Admin extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'brand_name', 'brand_slug', 'brand_desc', 'brand_status'
+        'admin_id', 'admin_email', 'admin_name', 'admin_username', 'admin_password', 'admin_phone'
     ];
-    protected $primaryKey = 'brand_id';
-    protected $table = 'tbl_brand';
+    protected $primaryKey = 'admin_id';
+    protected $table = 'tbl_admin';
 }

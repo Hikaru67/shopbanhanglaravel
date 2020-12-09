@@ -8,7 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
-use Login;
+use App\Login;
 use App\Social;
 use Socialite;
 //use Laravel\Socialite\Facades\Socialite;
@@ -43,25 +43,29 @@ class AdminController extends Controller
 
     public function dashboard(Request $request)
     {
-        $this->AuthLogin();
-    	$admin_username = $request->admin_username;
-    	$admin_password = md5($request->admin_password);
+        //$this->AuthLogin();
+        if(Session::get('admin_id')){
+            return Redirect::to('dashboard');
+        }else{
+            $admin_username = $request->admin_username;
+            $admin_password = md5($request->admin_password);
 
-//    	$result = FacadesDB::table('tbl_admin')->where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
-        $result = Login::where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
-    	if($result){
-			// $request->session()->put('admin_name', $result->admin_name);
-			// $request->session()->put('admin_id', $result->admin_id);
-			Session::put('admin_name', $result->admin_name);
-			Session::put('admin_id', $result->admin_name);
-    		return Redirect('/dashboard');
-    	}
-    	else
-    	{
-			// $request->session()->put('message', 'Tên tài khoản hoặc mật khẩu không chính xác');
-			Session::put('message', 'Tên đăng nhập hoặc mật khẩu không chính xác');
-			return Redirect::to('/admin');
-    	}
+    //    	$result = FacadesDB::table('tbl_admin')->where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
+            $result = Login::where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
+            if($result){
+                // $request->session()->put('admin_name', $result->admin_name);
+                // $request->session()->put('admin_id', $result->admin_id);
+                Session::put('admin_name', $result->admin_name);
+                Session::put('admin_id', $result->admin_name);
+                return Redirect('/dashboard');
+            }
+            else
+            {
+                // $request->session()->put('message', 'Tên tài khoản hoặc mật khẩu không chính xác');
+                Session::put('message', 'Tên đăng nhập hoặc mật khẩu không chính xác');
+                return Redirect::to('/admin');
+            }
+        }
 	}
 
 	public function logout()
