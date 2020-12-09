@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Category;
+use App\Brand;
+use App\Product;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -31,7 +33,7 @@ class CategoryProduct extends Controller
     public function all_category_product()
     {
         $this->AuthLogin();
-    	$all_category_product = DB::table('tbl_category_product')->get();
+    	$all_category_product = Category::get();
     	$manager_category_product = view('admin.all_category_product')->with('all_category_product', $all_category_product);
     	return view('admin_layout')->with('admin.all_category_product', $manager_category_product);
     }
@@ -45,14 +47,14 @@ class CategoryProduct extends Controller
     	$data['category_desc'] = $request->category_product_desc;
     	$data['category_status'] = $request->category_product_status;
 
-    	DB::table('tbl_category_product')->insert($data);
+    	Category::insert($data);
     	Session::put('message','Thêm danh mục sản phẩm thành công');
     	return Redirect::to('add-category-product');
     }
     public function edit_category_product($category_product_id)
     {
         $this->AuthLogin();
-    	$edit_category_product = DB::table('tbl_category_product')->where('category_id', $category_product_id)->get();
+    	$edit_category_product = Category::where('category_id', $category_product_id)->get();
     	$manager_category_product = view('admin.edit_category_product')->with('edit_category_product', $edit_category_product);
     	return view('admin_layout')->with('admin.edit_category_product', $manager_category_product);
     }
@@ -64,14 +66,14 @@ class CategoryProduct extends Controller
         $data['slug_category_product'] = $request->slug_category_product;
         $data['meta_keywords'] = $request->category_meta_keywords;
     	$data['category_desc'] = $request->category_product_desc;
-    	DB::table('tbl_category_product')->where('category_id', $category_product_id)->update($data);
+    	Category::where('category_id', $category_product_id)->update($data);
     	Session::put('message', 'Cập nhật danh mục sản phẩm thành công');
     	return Redirect::to('all-category-product');
     }
     public function delete_category_product($category_product_id)
     {
         $this->AuthLogin();
-    	DB::table('tbl_category_product')->where('category_id', $category_product_id)->delete();
+    	Category::where('category_id', $category_product_id)->delete();
     	Session::put('message', 'Xóa danh mục sản phẩm thành công');
     	return Redirect::to('all-category-product');
     }
@@ -79,14 +81,14 @@ class CategoryProduct extends Controller
     public function unactive_category_product($category_product_id)
     {
         $this->AuthLogin();
-    	DB::table('tbl_category_product')->where('category_id', $category_product_id)->update(['category_status'=>0]);
+    	Category::where('category_id', $category_product_id)->update(['category_status'=>0]);
     	Session::put('message', 'Hủy kích hoạt danh mục sản phẩm thành công');
     	return Redirect::to('all-category-product');
     }
     public function active_category_product($category_product_id)
     {
         $this->AuthLogin();
-    	DB::table('tbl_category_product')->where('category_id', $category_product_id)->update(['category_status'=>1]);
+    	Category::where('category_id', $category_product_id)->update(['category_status'=>1]);
     	Session::put('message', 'Kích hoạt danh mục sản phẩm thành công');
     	return Redirect::to('all-category-product');
     }
@@ -97,12 +99,12 @@ class CategoryProduct extends Controller
     {
 
 
-        $category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'asc')->get();
+        $category_product = Category::where('category_status','1')->orderby('category_id', 'asc')->get();
+        $brand_product = Brand::where('brand_status','1')->orderby('brand_id', 'asc')->get();
 
-        $category_by_id = DB::table('tbl_product')->join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')->where('tbl_category_product.slug_category_product',$slug_category_product)->get();
+        $category_by_id = Product::join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')->where('tbl_category_product.slug_category_product',$slug_category_product)->get();
 
-        $category_name = DB::table('tbl_category_product')->where('tbl_category_product.slug_category_product', $slug_category_product)->get();
+        $category_name = Category::where('tbl_category_product.slug_category_product', $slug_category_product)->get();
 
         foreach ($category_name as $key => $value) {
             $meta_desc = $value->category_desc;
@@ -111,7 +113,7 @@ class CategoryProduct extends Controller
             $url_canonical = $request->url();
         }
         foreach ($brand_product as $key => $item) {
-            $count[$item->brand_id] = DB::table('tbl_brand')->join('tbl_product', 'tbl_brand.brand_id','=','tbl_product.brand_id')
+            $count[$item->brand_id] = Brand::join('tbl_product', 'tbl_brand.brand_id','=','tbl_product.brand_id')
                 ->where('tbl_brand.brand_status','1')->where('tbl_brand.brand_id', $item->brand_id)->count('tbl_product.product_id');
         }
         return view('pages.category.show_category')->with('category', $category_product)->with('brand', $brand_product)->with('category_by_id', $category_by_id)->with('category_name', $category_name)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('count', $count);

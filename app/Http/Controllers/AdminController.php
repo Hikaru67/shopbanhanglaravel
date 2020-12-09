@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Http\Requests;
-use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 use App\Login;
 use App\Social;
 use Socialite;
-//use Laravel\Socialite\Facades\Socialite;
-//use Laravel\Socialite;
+
 session_start();
 
 class AdminController extends Controller
@@ -50,7 +47,6 @@ class AdminController extends Controller
             $admin_username = $request->admin_username;
             $admin_password = md5($request->admin_password);
 
-    //    	$result = FacadesDB::table('tbl_admin')->where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
             $result = Login::where('admin_username', $admin_username)->where('admin_password', $admin_password)->first();
             if($result){
                 // $request->session()->put('admin_name', $result->admin_name);

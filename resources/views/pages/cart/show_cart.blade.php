@@ -3,10 +3,6 @@
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="{{URL::to('/index')}}">Trang chủ</a></li>
-				  <li class="active">Giỏ hàng</li>
-				</ol>
 			</div>
 			<div class="table-responsive cart_info">
 				<?php

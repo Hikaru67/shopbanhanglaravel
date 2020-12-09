@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Category;
+use App\Brand;
+use App\Product;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -16,10 +18,10 @@ class CartController extends Controller
     {
     	$productId = $request->productid_hidden;
     	$quanlity = $request->qty;
-    	$productInfo = DB::table('tbl_product')->where('product_id', $productId)->first();
-    	
-    	$category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'asc')->get();
+    	$productInfo = Product::where('product_id', $productId)->first();
+
+    	$category_product = Category::where('category_status','1')->orderby('category_id', 'asc')->get();
+        $brand_product = Brand::where('brand_status','1')->orderby('brand_id', 'asc')->get();
 
         $data['id'] = $productId;
         $data['qty'] = $quanlity;
@@ -29,12 +31,12 @@ class CartController extends Controller
         $data['options']['image'] = $productInfo->product_image;
         Cart::add($data);
         return Redirect::to('/show-cart');
-        
+
     }
     public function show_cart()
     {
-    	$category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
-        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'asc')->get();
+    	$category_product = Category::where('category_status','1')->orderby('category_id', 'asc')->get();
+        $brand_product = Brand::where('brand_status','1')->orderby('brand_id', 'asc')->get();
 
     	return view('pages.cart.show_cart')->with('category', $category_product)->with('brand', $brand_product);
     }
