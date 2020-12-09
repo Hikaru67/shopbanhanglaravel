@@ -33,7 +33,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="{{asset('frontend/images/ico/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -49,8 +49,8 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> +84 372 05x xxx</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> shoppingall4you@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div><!--/header_top-->
-        
+
         <div class="header-middle"><!--header-middle-->
             <div class="container">
                 <div class="row">
@@ -87,7 +87,7 @@
                                     <li><a href="#">UK</a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                     DOLLAR
@@ -122,7 +122,7 @@
                                 <?php
                                     }
                                 ?>
-                                
+
                                 <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                                 <?php
                                     if($customer_id){
@@ -141,7 +141,7 @@
                 </div>
             </div>
         </div><!--/header-middle-->
-    
+
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
@@ -160,12 +160,12 @@
                                 {{-- <li class="dropdowns"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li> 
-                                        <li><a href="checkout.html">Checkout</a></li> 
-                                        <li><a href="cart.html">Cart</a></li> 
-                                        <li><a href="login.html">Login</a></li> 
+                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="login.html">Login</a></li>
                                     </ul>
-                                </li> --}} 
+                                </li> --}}
                                {{--  <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
@@ -189,7 +189,7 @@
             </div>
         </div><!--/header-bottom-->
     </header><!--/header-->
-    
+
     <section id="slider"><!--slider-->
         <div class="container">
             <div class="row">
@@ -200,35 +200,41 @@
                             <li data-target="#slider-carousel" data-slide-to="1"></li>
                             <li data-target="#slider-carousel" data-slide-to="2"></li>
                         </ol>
-                        
+
                         <div class="carousel-inner">
                             <div class="item active">
-                                <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="{{URL::to('frontend/images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <h1><span>E</span>-SHOPPER</h1>--}}
+{{--                                    <h2>Free E-Commerce Template</h2>--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>--}}
+{{--                                    <button type="button" class="btn btn-default get">Get it now</button>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-sm-12">--}}
+{{--                                    <img src="{{URL::to('frontend/images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />--}}
+{{--                                    <img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />--}}
+{{--                                </div>--}}
+                                <div>
+                                    <img src="{{URL::to('frontend/images/home/Normal-Note20-800-300-800x300.png')}}" class="girl img-responsive" alt="">
                                 </div>
                             </div>
                             <div class="item">
-                                <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>100% Responsive Design</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="{{URL::to('frontend/images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <h1><span>E</span>-SHOPPER</h1>--}}
+{{--                                    <h2>100% Responsive Design</h2>--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>--}}
+{{--                                    <button type="button" class="btn btn-default get">Get it now</button>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <img src="{{URL::to('frontend/images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />--}}
+{{--                                    <img src="{{URL::to('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />--}}
+{{--                                </div>--}}
+                                <div>
+                                    <img src="{{URL::to('frontend/images/home/iphone-12-800-300-800x300-2.png')}}" class="girl img-responsive" alt="">
                                 </div>
                             </div>
-                            
+
                             <div class="item">
-                                <div class="col-sm-6">
+                                {{--<div class="col-sm-6">
                                     <h1><span>E</span>-SHOPPER</h1>
                                     <h2>Free Ecommerce Template</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -237,11 +243,14 @@
                                 <div class="col-sm-6">
                                     <img src="{{URL::to('frontend/images/home/girl3.jpg')}}" class="girl img-responsive" alt="" />
                                     <img src="{{URL::to('frontend/images/home/pricing.png')}}" class="pricing" alt="" />
+                                </div>--}}
+                                <div>
+                                    <img src="{{URL::to('frontend/images/home/800-300-800x300-1.png')}}" class="girl img-responsive" alt="">
                                 </div>
                             </div>
-                            
+
                         </div>
-                        
+
                         <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
                             <i class="fa fa-angle-left"></i>
                         </a>
@@ -249,12 +258,12 @@
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </section><!--/slider-->
-    
+
     <section>
         <div class="container">
             <div class="row">
@@ -283,7 +292,7 @@
                                     </div>
                                 </div>
                             </div>
- --}}                       
+ --}}
                             @foreach($category as $key => $cate)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -291,20 +300,21 @@
                                 </div>
                             </div>
                             @endforeach
-                            
+
                         </div><!--/category-products-->
-                    
+
                         <div class="brands_products"><!--brands_products-->
                             <h2>Thương hiệu sản phẩm</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
+                                    <?php $i=0;?>
                                     @foreach($brand as $key => $brand)
-                                    <li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
+                                    <li><a href="{{URL::to('/thuong-hieu-san-pham/'.$brand->brand_id)}}"> <span class="pull-right">({{$count[$brand->brand_id]}})</span>{{$brand->brand_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div><!--/brands_products-->
-                        
+
                         {{-- <div class="price-range"><!--price-range-->
                             <h2>Price Range</h2>
                             <div class="well text-center">
@@ -312,23 +322,23 @@
                                  <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
                             </div>
                         </div><!--/price-range--> --}}
-                        
+
                         <div class="shipping text-center"><!--shipping-->
                             <img src="{{URL::to('frontend/images/home/shipping.jpg')}}" alt="" />
                         </div><!--/shipping-->
-                    
+
                     </div>
                 </div>
-                
+
                 <div class="col-sm-9 padding-right">
-                    
+
                     @yield('content')
 
                 </div>
             </div>
         </div>
     </section>
-    
+
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
             <div class="container">
@@ -354,7 +364,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -369,7 +379,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -384,7 +394,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -409,7 +419,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-widget">
             <div class="container">
                 <div class="row">
@@ -471,11 +481,11 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -484,11 +494,11 @@
                 </div>
             </div>
         </div>
-        
-    </footer><!--/Footer-->
-    
 
-  
+    </footer><!--/Footer-->
+
+
+
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>

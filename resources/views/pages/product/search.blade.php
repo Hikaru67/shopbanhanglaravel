@@ -10,14 +10,14 @@
         <div class="product-image-wrapper">
             <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{URL::to('uploads/product/'.$product->product_image)}}" width="200" height="200" alt="" />
+                        <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" height="400" alt="" />
                         <h2>{{number_format($product->product_price).' VNĐ'}}</h2>
                         <p>{{$product->product_name}}</p>
                         <form action="#">
                             <a  class="btn btn-default add-to-cart">
                                 <i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
                         </form>
-                        
+
                     </div>
             </div>
             <div class="choose">

@@ -34,7 +34,7 @@ class CheckoutController extends Controller
     	$data['customer_name'] = $request->customer_name;
     	$data['customer_email'] = $request->customer_email;
     	$data['customer_phone'] = $request->customer_phone;
-    	
+
     	$customer_id = DB::table('tbl_customers')->insertGetId($data);
     	Session::put('customer_id', $customer_id);
     	Session::put('customer_name', $request->customer_name);
@@ -78,18 +78,21 @@ class CheckoutController extends Controller
         }
         switch ($data['payment_method']) {
             case 1:
-                echo 'Thanh toán bằng ATM';
+                Cart::destroy();
+                return view('pages.checkout.handcash');
                 break;
-            
+
             case 2:
+                Cart::destroy();
                 return view('pages.checkout.handcash');
                 break;
 
             case 3:
-                echo 'Thanh toán bằng thẻ ghi nợ';
+                Cart::destroy();
+                return view('pages.checkout.handcash');
                 break;
         }
-        
+
     }
     public function save_checkout_customer(Request $request)
     {

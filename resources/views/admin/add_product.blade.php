@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="header-title"><center>Thêm sản phẩm</center></h4>
-            <?php 
+            <?php
 				$message = Session::get('message');
 				if($message){
 					echo '<span class="text-alert">'.$message.'</span>';
@@ -20,11 +20,11 @@
                 </div>
                 <div class="form-group">
                     <label for="product_price">Giá sản phẩm</label>
-                    <input type="text" name="product_price" class="form-control" id="product_name" aria-describedby="emailHelp" placeholder="Tên sản phẩm">
+                    <input type="text" name="product_price" class="form-control" id="product_name" aria-describedby="emailHelp" placeholder="Giá sản phẩm">
                 </div>
                 <div class="form-group">
                     <label for="product_image">Hình ảnh sản phẩm</label>
-                    <input type="file" name="product_image" class="form-control" id="product_name" aria-describedby="emailHelp" placeholder="Tên sản phẩm">
+                    <input type="file" name="product_image" class="form-control" id="product_name" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="product_desc">Mô tả sản phẩm</label>

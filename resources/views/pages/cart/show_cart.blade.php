@@ -27,7 +27,7 @@
 						@foreach($content as $key => $value)
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="{{URL::to('uploads/product/'.$value->options->image)}}" width="50" alt=""></a>
+								<a href=""><img src="{{URL::to('public/uploads/product/'.$value->options->image)}}" width="50" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{$value->name}}</a></h4>
@@ -96,7 +96,7 @@
 									<option>Canada</option>
 									<option>Dubai</option>
 								</select>
-								
+
 							</li>
 							<li class="single_field">
 								<label>Region / State:</label>
@@ -110,7 +110,7 @@
 									<option>Canada</option>
 									<option>Dubai</option>
 								</select>
-							
+
 							</li>
 							<li class="single_field zip-field">
 								<label>Zip Code:</label>
@@ -149,7 +149,7 @@
                             <?php
                                 }
                             ?>
-							
+
 					</div>
 				</div>
 			</div>

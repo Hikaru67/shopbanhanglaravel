@@ -21,7 +21,7 @@ class ProductController extends Controller
             return Redirect::to('admin')->send();
         }
     }
-    
+
     public function add_product()
     {
         $this->AuthLogin();
@@ -53,7 +53,7 @@ class ProductController extends Controller
     	$data['product_status'] = $request->product_status;
 
     	$get_image = $request->file('product_image');
-    	
+
     	if($get_image){
     		$get_name_image = $get_image->getClientOriginalName();
     		$arr = explode('.', $get_name_image);
@@ -69,7 +69,7 @@ class ProductController extends Controller
     		}
     		Session::put('message','Định dạng hình ảnh không đúng');
 			return Redirect::to('add-product');
-    		
+
     	}
     	DB::table('tbl_product')->insert($data);
     	Session::put('message','Thêm sản phẩm thành công');
@@ -111,7 +111,7 @@ class ProductController extends Controller
     		}
     		Session::put('message','Định dạng hình ảnh không đúng');
 			return Redirect::to('edit-product');
-    		
+
     	}
     	$data['product_image'] = $request->product_image_old;
     	DB::table('tbl_product')->where('product_id', $product_id)->update($data);
@@ -151,7 +151,7 @@ class ProductController extends Controller
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         ->where('tbl_product.product_id', $product_id)->orderby('product_id','asc')->get();
-        
+
         foreach ($details_product as $key => $value) {
             $category_id = $value->category_id;
             $meta_desc = $value->category_desc;
@@ -165,7 +165,11 @@ class ProductController extends Controller
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
         ->where('tbl_category_product.category_id', $category_id)->whereNotIn('tbl_product.product_id', [$product_id])->get();
+        foreach ($brand_product as $key => $item) {
+            $count[$item->brand_id] = DB::table('tbl_brand')->join('tbl_product', 'tbl_brand.brand_id','=','tbl_product.brand_id')
+                ->where('tbl_brand.brand_status','1')->where('tbl_brand.brand_id', $item->brand_id)->count('tbl_product.product_id');
+        }
 
-        return view('pages.product.show_details')->with('category', $category_product)->with('brand', $brand_product)->with('product_details', $details_product)->with('relate', $related_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('image_og', $image_og);
+        return view('pages.product.show_details')->with('category', $category_product)->with('brand', $brand_product)->with('product_details', $details_product)->with('relate', $related_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('image_og', $image_og)->with('count', $count);
     }
 }

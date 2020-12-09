@@ -12,7 +12,7 @@
 			<div class="step-one">
 				<h2 class="heading">Xem lại giỏ hàng</h2>
 			</div>
-			
+
 			<div class="table-responsive cart_info">
 				<?php
 					$content = Cart::content();
@@ -65,8 +65,8 @@
 			<h4 style="margin: 40px 0;">Chọn hình thức thanh toán</h4>
 			<form action="{{URL::to('/order-place')}}" method="post" >
 				{{csrf_field()}}
-				
-			
+
+
 			<div class="payment-options">
 				<span>
 					<label><input name="payment_option" type="checkbox" value="1"> Thanh toán bằng ATM</label>

@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="header-title"><center>Cập nhật sản phẩm</center></h4>
-            <?php 
+            <?php
 				$message = Session::get('message');
 				if($message){
 					echo '<span class="text-alert">'.$message.'</span>';
@@ -41,7 +41,7 @@
                     <label class="col-form-label">Danh mục sản phẩm</label>
                     <select name="product_category" class="form-control">
                         @foreach($category_product as $key => $cate)
-                            <?php if($cate->category_id==$edit_value->product_id){ ?>
+                            <?php if($cate->category_id==$edit_value->category_id){ ?>
                                 <option value="{{$cate->category_id}}" selected>{{$cate->category_name}}</option>
                             <?php } else {?>
                             <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
@@ -53,8 +53,8 @@
                     <label class="col-form-label">Thương hiệu</label>
                     <select name="product_brand" onselect="{{$edit_value->product_name}}" class="form-control">
                         @foreach($brand_product as $key => $brand)
-                            <?php if($cate->category_id==$edit_value->product_id){ ?>
-                                <option value="{{$cate->category_id}}" selected>{{$cate->category_name}}</option>
+                            <?php if($brand->brand_id==$edit_value->brand_id){ ?>
+                                <option value="{{$brand->brand_id}}" selected>{{$brand->brand_name}}</option>
                             <?php } else {?>
                             <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
                             <?php } ?>

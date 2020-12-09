@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="header-title"><center>Cập nhật thương hiệu sản phẩm</center></h4>
-            <?php 
+            <?php
 				$message = Session::get('message');
 				if($message){
 					echo '<span class="text-alert">'.$message.'</span>';
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="slug_product_name">Slug</label>
-                    <input type="text" name="slug_product_name" value="{{$edit_value->brand_slug}} class="form-control" id="slug_product_name" placeholder="Slug">
+                    <input type="text" name="slug_product_name" value="{{$edit_value->brand_slug}}" class="form-control" id="slug_product_name" placeholder="Slug">
                 </div>
                 <div class="form-group">
                     <label for="brand_product_desc">Mô tả thương hiệu</label>

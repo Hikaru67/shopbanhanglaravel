@@ -21,7 +21,7 @@ class CategoryProduct extends Controller
             return Redirect::to('admin')->send();
         }
     }
-    
+
     public function add_category_product()
     {
         $this->AuthLogin();
@@ -95,7 +95,7 @@ class CategoryProduct extends Controller
 
     public function show_category_home($slug_category_product, Request $request)
     {
-        
+
 
         $category_product = DB::table('tbl_category_product')->where('category_status','1')->orderby('category_id', 'asc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderby('brand_id', 'asc')->get();
@@ -110,7 +110,10 @@ class CategoryProduct extends Controller
             $meta_title = $value->category_name;
             $url_canonical = $request->url();
         }
-        
-        return view('pages.category.show_category')->with('category', $category_product)->with('brand', $brand_product)->with('category_by_id', $category_by_id)->with('category_name', $category_name)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical);
+        foreach ($brand_product as $key => $item) {
+            $count[$item->brand_id] = DB::table('tbl_brand')->join('tbl_product', 'tbl_brand.brand_id','=','tbl_product.brand_id')
+                ->where('tbl_brand.brand_status','1')->where('tbl_brand.brand_id', $item->brand_id)->count('tbl_product.product_id');
+        }
+        return view('pages.category.show_category')->with('category', $category_product)->with('brand', $brand_product)->with('category_by_id', $category_by_id)->with('category_name', $category_name)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('count', $count);
     }
 }

@@ -4,7 +4,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Progress Table</h4>
-                                <?php 
+                                <?php
                                     $message = Session::get('message');
                                     if($message){
                                         echo '<span class="text-alert">'.$message.'</span>';
@@ -33,7 +33,7 @@
                                                 <tr>
                                                     <th scope="row">{{$product->product_id}}</th>
                                                     <td>{{$product->product_name}}</td>
-                                                    <td>{{$product->product_price}}</td>
+                                                    <td>{{number_format($product->product_price)}}</td>
                                                     <td><img src="public/uploads/product/{{$product->product_image}}" height="100" width="100"></td>
                                                     <td>{{$product->category_name}}</td>
                                                     <td>{{$product->brand_name}}</td>
@@ -47,9 +47,9 @@
                                                                     <a href="{{URL::to('/unactive-product/'.$product->product_id)}}"><span class="fa-thums-styling fa fa-thumbs-up"></span></a>
                                                             <?php   }
                                                                 else{
-                                                            ?>  
+                                                            ?>
                                                                     <a href="{{URL::to('/active-product/'.$product->product_id)}}"><span class="fa-thums-styling fa fa-thumbs-down"></span></a>
-                                                            <?php   }   ?> 
+                                                            <?php   }   ?>
                                                         </span>
                                                     </td>
                                                     {{-- <td><span class="status-p bg-primary">09 / 07 / 2018</span></td> --}}
@@ -60,7 +60,7 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                                @endforeach 
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

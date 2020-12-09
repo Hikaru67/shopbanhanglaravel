@@ -15,8 +15,10 @@ class CreateTblCategoryProduct extends Migration
     {
         Schema::create('tbl_category_product', function (Blueprint $table) {
             $table->id('category_id');
+            $table->text('meta_keywords');
             $table->string('category_name');
             $table->text('category_desc');
+            $table->string('slug_category_product');
             $table->integer('category_status');
             $table->timestamps();
         });
