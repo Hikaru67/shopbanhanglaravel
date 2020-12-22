@@ -8,8 +8,8 @@ class Login extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'admin_id', 'admin_name', 'admin_username', 'admin_password', 'admin_email', 'admin_phone'
+       'customer_username', 'customer_name', 'customer_password', 'customer_email', 'customer_phone'
     ];
-    protected $primaryKey = 'admin_id';
-    protected $table = 'tbl_admin';
+    protected $primaryKey = 'customer_id';
+    protected $table = 'tbl_customer';
 }

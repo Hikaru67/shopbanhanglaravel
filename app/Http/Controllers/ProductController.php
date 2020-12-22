@@ -37,7 +37,7 @@ class ProductController extends Controller
         $this->AuthLogin();
     	$all_product = Product::join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
     	->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-    	->orderby('product_id','asc')->get();
+    	->orderby('product_id','asc')->paginate(5);
     	$manager_product = view('admin.all_product')->with('all_product', $all_product);
     	return view('admin_layout')->with('admin.all_product', $manager_product);
     }

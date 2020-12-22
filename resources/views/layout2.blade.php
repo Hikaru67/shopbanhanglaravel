@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-----------------------Seo----------------------------->
+    <meta name="google-signin-client_id" content="56662950122-ucbmtnqdouhhc7ls7h28t6guka19n9m6.apps.googleusercontent.com"/>
+    <!-----------------------Seo----------------------------->
     <title>Home | E-Shopper</title>
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -57,7 +60,8 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.pn')}}g" alt="" /></a>
+                            {{--<a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.pn')}}g" alt="" /></a>--}}
+                            <a href="{{URL::to('/')}}"><img src="https://www.allforyou.fr/wp-content/uploads/2020/03/allforyou.png" width="120px" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -342,5 +346,7 @@
     <script src="{{asset('frontend/js/price-range.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Progress Table</h4>
-                                <?php 
+                                <?php
                                     $message = Session::get('message');
                                     if($message){
                                         echo '<span class="text-alert">'.$message.'</span>';
@@ -37,9 +37,9 @@
                                                                     <a href="{{URL::to('/unactive-brand-product/'.$bra_pro->brand_id)}}"><span class="fa-thums-styling fa fa-thumbs-up"></span></a>
                                                             <?php   }
                                                                 else{
-                                                            ?> 
+                                                            ?>
                                                                     <a href="{{URL::to('/active-brand-product/'.$bra_pro->brand_id)}}"><span class="fa-thums-styling fa fa-thumbs-down"></span></a>
-                                                            <?php   }   ?> 
+                                                            <?php   }   ?>
                                                         </span>
                                                     </td>
                                                     {{-- <td><span class="status-p bg-primary">09 / 07 / 2018</span></td> --}}
@@ -50,9 +50,10 @@
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                                @endforeach 
+                                                @endforeach
                                             </tbody>
                                         </table>
+                                        {{$all_brand_product->links()}}
                                     </div>
                                 </div>
                             </div>

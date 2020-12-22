@@ -20,6 +20,7 @@
     <meta property="og:title" content="{{$meta_title}}" />
     <meta property="og:url" content="{{$url_canonical}}" />
     <meta property="og:type" content="website" />
+    <meta name="google-signin-client_id" content="56662950122-ucbmtnqdouhhc7ls7h28t6guka19n9m6.apps.googleusercontent.com"/>
     <!---------------------//Og----------------------------->
     <title>{{$meta_title}}</title>
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -74,7 +75,8 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.pn')}}g" alt="" /></a>
+                            {{--<a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.pn')}}g" alt="" /></a>--}}
+                            <a href="{{URL::to('/')}}"><img src="https://www.allforyou.fr/wp-content/uploads/2020/03/allforyou.png" width="120px" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -103,10 +105,10 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <?php
                                     $customer_id = Session::get('customer_id');
+                                    $customer_name = Session::get('customer_name');
                                     $shipping_id = Session::get('shipping_id');
                                     if($customer_id&&!$shipping_id){
                                 ?>
@@ -127,6 +129,7 @@
                                 <?php
                                     if($customer_id){
                                 ?>
+                                    <li><a href="#"><i class="fa fa-user"></i>{{$customer_name}}</a></li>
                                     <li><a href="{{URL::to('/logout-customer')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 <?php
                                     }else{
@@ -507,5 +510,6 @@
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="MbUnlumX"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

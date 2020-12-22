@@ -33,7 +33,7 @@ class CategoryProduct extends Controller
     public function all_category_product()
     {
         $this->AuthLogin();
-    	$all_category_product = Category::get();
+    	$all_category_product = Category::orderby('category_id', 'asc')->paginate(5);
     	$manager_category_product = view('admin.all_category_product')->with('all_category_product', $all_category_product);
     	return view('admin_layout')->with('admin.all_category_product', $manager_category_product);
     }

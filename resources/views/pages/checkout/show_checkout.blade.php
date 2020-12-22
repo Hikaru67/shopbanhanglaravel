@@ -48,13 +48,13 @@
 									<textarea name="shipping_notes"  placeholder="Ghi chú đơn hàng của bạn" rows="16"></textarea>
 									<input type="submit" value="Gửi" name="send_order" class="btn btn-primary btn-sm"></button>
 									</form>
-								
+
 							</div>
 						</div>
-					</div>				
+					</div>
 				</div>
 			</div>
-			<div class="review-payment">
+			{{--<div class="review-payment">
 				<h2>Review & Payment</h2>
 			</div>
 
@@ -161,7 +161,7 @@
 									</tr>
 									<tr class="shipping-cost">
 										<td>Shipping Cost</td>
-										<td>Free</td>										
+										<td>Free</td>
 									</tr>
 									<tr>
 										<td>Total</td>
@@ -183,7 +183,7 @@
 					<span>
 						<label><input type="checkbox"> Paypal</label>
 					</span>
-				</div>
+				</div>--}}
 		</div>
 	</section> <!--/#cart_items-->
 @endsection

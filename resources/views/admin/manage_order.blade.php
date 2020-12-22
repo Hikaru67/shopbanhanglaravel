@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Quản lý đơn hàng</h4>
-            <?php 
+            <?php
                 $message = Session::get('message');
                 if($message){
                     echo '<span class="text-alert">'.$message.'</span>';
@@ -40,22 +40,23 @@
                                                 Đang xử lý</span>
                                         <?php   }
                                             else{
-                                        ?> 
+                                        ?>
                                                 </span>
-                                        <?php   }   ?> 
+                                        <?php   }   ?>
                                     </span>
                                 </td>
                                 {{-- <td><span class="status-p bg-primary">09 / 07 / 2018</span></td> --}}
                                 <td>
                                     <ul class="d-flex justify-content-center">
-                                        <li class="mr-3"><a href="{{URL::to('/view-order/'.$order->order_id)}}" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                        <li class="mr-3"><a href="{{URL::to('/view-order/'.$order->order_id)}}" class="text-secondary">{{--<i class="fa fa-edit">--}}<i class="fas fa-eye"></i></i></a></li>
                                         <li><a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này không ?');" href="{{URL::to('/delete-order/'.$order->order_id)}}" class="text-danger"><i class="ti-trash"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>
-                            @endforeach 
+                            @endforeach
                         </tbody>
                     </table>
+                    {{$all_order->links()}}
                 </div>
             </div>
         </div>

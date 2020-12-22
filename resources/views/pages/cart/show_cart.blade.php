@@ -1,5 +1,22 @@
 @extends('layout2')
 @section('content')
+    <?php
+        if(!Cart::count()){
+    ?>
+    <div class="container">
+        <div class="col-sm-4"></div>
+        <div class="cart-info table-responsive col-sm-4">
+            <div class="cart-empty-text">There are no items in this cart</div>
+            <a href="/">
+                <button type="button" class="btn next-btn-secondary next-btn-large">CONTINUE SHOPPING</button>
+            </a>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <br><br>
+    <?php
+        }else{
+    ?>
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -22,7 +39,7 @@
 					<tbody>
 						@foreach($content as $key => $value)
 						<tr>
-							<td class="cart_product">
+							<td class="cart_product " >
 								<a href=""><img src="{{URL::to('public/uploads/product/'.$value->options->image)}}" width="50" alt=""></a>
 							</td>
 							<td class="cart_description">
@@ -151,4 +168,7 @@
 			</div>
 		</div>
 	</section><!--/#do_action-->
+    <?php
+        }
+    ?>
 @endsection

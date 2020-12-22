@@ -67,4 +67,7 @@ class HomeController extends Controller
         //---send mail
 //        return redirect('/')->with('message','');
     }
+    public function api_test(){
+        return Brand::get();
+    }
 }
