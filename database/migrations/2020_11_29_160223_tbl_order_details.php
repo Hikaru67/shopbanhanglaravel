@@ -15,7 +15,8 @@ class TblOrderDetails extends Migration
     {
         Schema::create('tbl_order_details', function (Blueprint $table) {
             $table->id('order_details_id');
-            $table->integer('order_id');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('order_id')->on('tbl_order');
             $table->integer('product_id');
             $table->string('product_name');
             $table->string('product_price');

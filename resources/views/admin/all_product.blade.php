@@ -34,7 +34,7 @@
                                                     <th scope="row">{{$product->product_id}}</th>
                                                     <td>{{$product->product_name}}</td>
                                                     <td>{{number_format($product->product_price)}}</td>
-                                                    <td><img src="public/uploads/product/{{$product->product_image}}" height="100" width="100"></td>
+                                                    <td><img src="uploads/product/{{$product->product_image}}" height="100" width="100"></td>
                                                     <td>{{$product->category_name}}</td>
                                                     <td>{{$product->brand_name}}</td>
 
@@ -42,14 +42,14 @@
                                                     <td>
                                                         <span class="text">
                                                             <?php
-                                                                if($product->product_status == 1){
+//                                                                if($product->product_status == 1){
                                                             ?>
+                                                                @if($product->product_status == 1)
                                                                     <a href="{{URL::to('/unactive-product/'.$product->product_id)}}"><span class="fa-thums-styling fa fa-thumbs-up"></span></a>
-                                                            <?php   }
-                                                                else{
-                                                            ?>
+                                                                @else
                                                                     <a href="{{URL::to('/active-product/'.$product->product_id)}}"><span class="fa-thums-styling fa fa-thumbs-down"></span></a>
-                                                            <?php   }   ?>
+                                                                @endif
+
                                                         </span>
                                                     </td>
                                                     {{-- <td><span class="status-p bg-primary">09 / 07 / 2018</span></td> --}}

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Login extends Model
 {
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
        'customer_username', 'customer_name', 'customer_password', 'customer_email', 'customer_phone'
     ];

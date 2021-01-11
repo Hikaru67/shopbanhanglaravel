@@ -4,7 +4,7 @@
 	<div class="product-details"><!--product-details-->
 		<div class="col-sm-5">
 			<div class="view-product">
-				<img src="{{URL::to('/public/uploads/product',$product->product_image)}}" alt="" />
+				<img src="{{URL::to('/uploads/product',$product->product_image)}}" alt="" />
 				<h3>ZOOM</h3>
 			</div>
 			<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -151,7 +151,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="{{URL::to('public/uploads/product/'.$relate->product_image)}}" height="200" width="200" alt="" />
+									<img src="{{URL::to('uploads/product/'.$relate->product_image)}}" height="250" alt="" />
 									<h2>{{number_format($relate->product_price)}} VNĐ</h2>
 									<p>{{$relate->product_name}}</p>
 									<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button>

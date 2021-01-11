@@ -97,3 +97,6 @@ Route::get('/admin/callback', 'AdminController@callback_facebook');
 //Login google
 Route::get('/login-google', 'AdminController@login_google');
 Route::get('/google/callback', 'AdminController@callback_google');
+
+//Customer
+Route::get('/messenger', 'CustomerController@messenger');

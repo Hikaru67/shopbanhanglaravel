@@ -17,12 +17,14 @@ class CreateTblProduct extends Migration
             $table->id('product_id');
             $table->string('product_name');
             $table->text('product_desc');
-            $table->text('product_content');
+            $table->text('product_content')->nullable();
             $table->string('product_price');
-            $table->string('product_image');
-            $table->integer('category_id');
-            $table->integer('brand_id');
-            $table->integer('product_status');
+            $table->string('product_image')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('category_id')->on('tbl_category_product');
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('brand_id')->on('tbl_brand');
+            $table->integer('product_status')->default(STATUS['ACTIVE']);
             $table->timestamps();
         });
     }

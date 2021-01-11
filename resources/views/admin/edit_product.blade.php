@@ -27,7 +27,7 @@
                     <label for="product_image">Hình ảnh sản phẩm</label>
                     <input type="file" name="product_image" value="{{$edit_value->product_image}}" class="form-control" id="product_name" aria-describedby="emailHelp">
                     <input type="text" name="product_image_old" value="{{$edit_value->product_image}}" class="form-control" id="product_name" hidden>
-                    <img src="{{URL::to('public/uploads/product/'.$edit_value->product_image)}}" height="100" width="100">
+                    <img src="{{URL::to('uploads/product/'.$edit_value->product_image)}}" height="100" width="100">
                 </div>
                 <div class="form-group">
                     <label for="product_desc">Mô tả sản phẩm</label>
