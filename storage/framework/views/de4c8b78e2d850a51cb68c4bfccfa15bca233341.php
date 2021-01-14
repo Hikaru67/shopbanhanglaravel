@@ -23,7 +23,7 @@
 							<input type="password" name="customer_password" placeholder="Mật khẩu" />
                             
                             <span>
-								<input type="checkbox" class="checkbox">
+								<input type="checkbox" class="checkbox" name="login_remember" value="1">
 								Ghi nhớ đăng nhập
 							</span>
                             <div class="col s12 m6 offset-m3 center-align">

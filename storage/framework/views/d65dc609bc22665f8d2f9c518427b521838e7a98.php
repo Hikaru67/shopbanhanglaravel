@@ -90,10 +90,10 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <?php
                                     $customer_id = Session::get('customer_id');
+                                    $customer_name = Session::get('customer_name');
                                     $shipping_id = Session::get('shipping_id');
                                     if($customer_id&&!$shipping_id){
                                 ?>
@@ -114,6 +114,7 @@
                                 <?php
                                     if($customer_id){
                                 ?>
+                                    <li><a href="#"><i class="fa fa-user"></i><?php echo e($customer_name); ?></a></li>
                                     <li><a href="<?php echo e(URL::to('/logout-customer')); ?>"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 <?php
                                     }else{

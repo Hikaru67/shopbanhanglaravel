@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cookie;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -56,6 +57,8 @@ class AdminController extends Controller
                 // $request->session()->put('admin_id', $result->admin_id);
                 Session::put('admin_name', $result->admin_name);
                 Session::put('admin_id', $result->admin_name);
+                Cookie::put('admin_name', $result->admin_name);
+                Cookie::put('admin_id', $result->admin_name);
                 return Redirect('/dashboard');
             }
             else

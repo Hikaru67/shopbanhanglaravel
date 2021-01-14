@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cookie;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -124,11 +125,16 @@ class CheckoutController extends Controller
         $data = $request->validate([
             'customer_username' => '',
             'customer_password' => '',
+            'login_remember' => ''
         ]);
         $username = $data['customer_username'];
         $password = md5($data['customer_password']);
         $result = DB::table('tbl_customers')->where('customer_username', $username)->where('customer_password', $password)->first();
         if($result){
+            if(isset($data['login_remember'])){
+                Cookie::queue('customerId', $result->customer_id);
+                Cookie::queue('customerName', $result->customer_name);
+            }
             Session::put('customer_id', $result->customer_id);
             Session::put('customer_name', $result->customer_name);
             return Redirect('/checkout');

@@ -29,7 +29,7 @@
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                             </a>--}}
                             <span>
-								<input type="checkbox" class="checkbox">
+								<input type="checkbox" class="checkbox" name="login_remember" value="1">
 								Ghi nhớ đăng nhập
 							</span>
                             <div class="col s12 m6 offset-m3 center-align">

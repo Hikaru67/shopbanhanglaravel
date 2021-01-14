@@ -18,6 +18,7 @@ class TblCustomers extends Migration
             $table->string('customer_username')->unique();
             $table->string('customer_password');
             $table->string('customer_name');
+            $table->string('avatar');
             $table->string('customer_email');
             $table->string('customer_phone');
             $table->timestamps();

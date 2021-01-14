@@ -99,4 +99,9 @@ Route::get('/login-google', 'AdminController@login_google');
 Route::get('/google/callback', 'AdminController@callback_google');
 
 //Customer
-Route::get('/messenger', 'CustomerController@messenger');
+Route::get('/messenger/{receiver_id}', 'CustomerController@messenger');
+Route::get('/messenger2', 'CustomerController@messenger2');
+Route::get('/messenger', function (){
+    return redirect('/messenger/0');
+});
+Route::post('/add-message', 'CustomerController@add_message');
