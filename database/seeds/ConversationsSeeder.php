@@ -15,7 +15,6 @@ class ConversationsSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'avatar' => AVATAR_USER_DATA[rand(1)],
                 'created_at' => now(),
             ],
             [
