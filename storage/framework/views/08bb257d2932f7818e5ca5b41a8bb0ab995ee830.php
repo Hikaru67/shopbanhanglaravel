@@ -130,11 +130,12 @@
                                     if($customer_id){
                                 ?>
                                     <li><a href="#"><i class="fa fa-user"></i><?php echo e($customer_name); ?></a></li>
+                                    <li><a href="/messenger2"><i class="fa fa-comments"></i></i>Messenger</a></li>
                                     <li><a href="<?php echo e(URL::to('/logout-customer')); ?>"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 <?php
                                     }else{
                                 ?>
-                                    <li><a href="<?php echo e(URL::to('/login-checkout')); ?>"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                                    <li><a href="<?php echo e(URL::to('/login')); ?>"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                 <?php
                                     }
                                 ?>
@@ -445,7 +446,7 @@
             <div class="container">
                 <div class="row">
                     <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                    <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                    <p class="pull-right">Designed by Noname<span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                 </div>
             </div>
         </div>
@@ -457,9 +458,9 @@
     <script src="<?php echo e(asset('frontend/js/jquery.js')); ?>"></script>
     <script src="<?php echo e(asset('frontend/js/bootstrap.min.js')); ?>"></script>
     <script src="<?php echo e(asset('frontend/js/jquery.scrollUp.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/price-range.js')); ?>"></script>
     <script src="<?php echo e(asset('frontend/js/jquery.prettyPhoto.js')); ?>"></script>
     <script src="<?php echo e(asset('frontend/js/main.js')); ?>"></script>
+    <script src="<?php echo e(asset('frontend/js/price-range.js')); ?>"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="MbUnlumX"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

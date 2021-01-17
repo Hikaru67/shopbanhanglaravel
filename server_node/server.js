@@ -8,7 +8,7 @@ io.on('error', function (socket){
     console.log('error')
 })
 io.on('connection', function (socket){
-    console.log('Có người vừa kết nối' + socket.io)
+    console.log('Có người vừa kết nối ' + socket.id)
 })
 var Redis = require('ioredis')
 var redis = new Redis(6379)
@@ -21,7 +21,7 @@ redis.on('pmessage', function (partner, chanel, message){
     console.log(partner)
 
     message = JSON.parse(message)
-
+    console.log(message.data)
     io.emit(chanel + ":" + message.event, message.data.message)
     console.log('Sent')
 })

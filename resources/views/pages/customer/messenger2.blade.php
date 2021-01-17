@@ -73,6 +73,7 @@ Website: http://emilcarlsson.se/
             <input type="text" placeholder="Search contacts..." />
         </div>
         <div id="contacts">
+
             <ul>
                 @foreach($list_customer as $key => $customer_c)
                     @if(!isset($new[$customer_c->customer_id]))
@@ -84,7 +85,7 @@ Website: http://emilcarlsson.se/
                                     <img src="{{$customer_c->avatar}}" alt="" />
                                     <div class="meta">
                                         <p class="name">{{$customer_c->customer_name}}</p>
-                                        <p class="preview">{{$customer_c->content}}</p>
+                                        <p class="preview" id="preview{{$customer_c->customer_id}}">{{$customer_c->content}}</p>
                                     </div>
                                 </div>
                             </li>
@@ -230,10 +231,11 @@ Website: http://emilcarlsson.se/
 <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
+<script src="https://use.typekit.net/hoy3lrg.js"></script>
 {{--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>--}}
-<script src="https://use.typekit.net/hoy3lrg.js"></script>
+
 </body>
 </html>

@@ -115,11 +115,12 @@
                                     if($customer_id){
                                 ?>
                                     <li><a href="#"><i class="fa fa-user"></i>{{$customer_name}}</a></li>
+                                    <li><a href="/messenger2"><i class="fa fa-comments"></i></i>Messenger</a></li>
                                     <li><a href="{{URL::to('/logout-customer')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 <?php
                                     }else{
                                 ?>
-                                    <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                                    <li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                 <?php
                                     }
                                 ?>

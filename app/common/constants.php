@@ -22,4 +22,7 @@ define("TYPE_MESSAGE", array(
     "FILE" => 3
 ));
 
+define('TYPE_CONVERSATION_SINGLE', 1);
+define('TYPE_CONVERSATION_MULTI', 2);
+
 ?>

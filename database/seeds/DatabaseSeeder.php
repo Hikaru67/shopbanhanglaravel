@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
              ProductSeeder::class,
              CustomerSeeder::class,
              AdminSeeder::class,
+             ConversationsSeeder::class,
+             ParticipantsSeeder::class,
              MessengerSeeder::class,
          ]);
 

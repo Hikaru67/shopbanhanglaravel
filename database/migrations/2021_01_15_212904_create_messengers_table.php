@@ -15,10 +15,11 @@ class CreateMessengersTable extends Migration
     {
         Schema::create('messengers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('customer_id')->on('tbl_customers');
-            $table->unsignedBigInteger('receiver_id');
-            $table->foreign('receiver_id')->references('customer_id')->on('tbl_customers');
+            $table->unsignedBigInteger('sender_id');
+            $table->foreign('sender_id')->references('customer_id')->on('tbl_customers');
+            $table->foreignId('conversation_id')->constrained('conversations');
+            /*$table->unsignedBigInteger('receiver_id');
+            $table->foreign('receiver_id')->references('customer_id')->on('tbl_customers');*/
             $table->text('content');
             $table->tinyInteger('type_message')->default(TYPE_MESSAGE['TEXT']);
             $table->timestamps();

@@ -99,8 +99,13 @@ Route::get('/login-google', 'AdminController@login_google');
 Route::get('/google/callback', 'AdminController@callback_google');
 
 //Customer
-Route::get('/messenger/{receiver_id}', 'CustomerController@messenger');
-Route::get('/messenger2', 'CustomerController@messenger2');
+Route::get('/login', 'CustomerController@login');
+Route::post('/login2', 'CustomerController@login2');
+Route::get('/messenger/{conversation_id}', 'CustomerController@messenger');
+Route::get('/messenger2/{conversation_id}', 'CustomerController@messenger2');
+Route::get('/messenger2', function (){
+    return redirect('/messenger2/0');
+});
 Route::get('/messenger', function (){
     return redirect('/messenger/0');
 });

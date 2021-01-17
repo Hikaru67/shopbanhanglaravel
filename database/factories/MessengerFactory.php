@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Messenger::class, function (Faker $faker) {
     return [
-        'customer_id' => rand(1,3),
-        'receiver_id' => rand(1,3),
+        'sender_id' => rand(1,3),
+        'conversation_id' => rand(1,6),
         'content' => $faker->sentence,
         'type_message' => TYPE_MESSAGE['TEXT'],
     ];

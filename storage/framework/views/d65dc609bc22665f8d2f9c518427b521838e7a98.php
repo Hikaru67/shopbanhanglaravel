@@ -119,7 +119,7 @@
                                 <?php
                                     }else{
                                 ?>
-                                    <li><a href="<?php echo e(URL::to('/login-checkout')); ?>"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                                    <li><a href="<?php echo e(URL::to('/login')); ?>"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                 <?php
                                     }
                                 ?>
