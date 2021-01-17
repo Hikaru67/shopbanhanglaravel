@@ -11609,3 +11609,12 @@
 #54 /home/hikaru/learn-php/shopbanhanglaravel/server.php(21): require_once('/home/hikaru/le...')
 #55 {main}
 "} 
+[2021-01-17 22:03:16] local.ERROR: Command "dump-autoload" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"dump-autoload\" is not defined. at /home/hikaru/learn-php/shopbanhanglaravel/vendor/symfony/console/Application.php:675)
+[stacktrace]
+#0 /home/hikaru/learn-php/shopbanhanglaravel/vendor/symfony/console/Application.php(254): Symfony\\Component\\Console\\Application->find('dump-autoload')
+#1 /home/hikaru/learn-php/shopbanhanglaravel/vendor/symfony/console/Application.php(166): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/hikaru/learn-php/shopbanhanglaravel/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/hikaru/learn-php/shopbanhanglaravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/hikaru/learn-php/shopbanhanglaravel/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
