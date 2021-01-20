@@ -6,6 +6,7 @@
     <title>Facebook Messenger - By Noname</title>
     <link rel="stylesheet" href="<?php echo e(asset('frontend/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('frontend/css/normalize.css')); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 
 </head>
@@ -92,16 +93,31 @@
 
             <div class="col-foot" >
                 <div class="compose" >
-                    <input type="text" name="content" placeholder="Aa">
-                    <div class="compose-dock" >
-                        <div class="dock" >
-                            <img src="<?php echo e(asset('uploads/picture.svg')); ?>">
-                            <input type="file" name="image_content">
-                            <img src="<?php echo e(asset('uploads/smile.svg')); ?>">
-                            <button class="submit" hidden><img src="<?php echo e(asset('uploads/smile.svg')); ?>"></button>
-                        </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="text" name="content" id="content" placeholder="Aa">
+                        <div class="compose-dock" >
+                            <div class="dock" >
+                                
 
-                    </div>
+                                <div class="input-group mb-3" style="float: left">
+                                    <input type="file" class="form-control"  name="content_image" id="content_image" style="display: none">
+                                    <label class="input-group-text" for="content_image">
+                                        <img name="upload_img" id="upload_img" src="<?php echo e(asset('uploads/picture.svg')); ?>">
+                                    </label>
+                                </div>
+
+                                <img src="<?php echo e(asset('uploads/smile.svg')); ?>">
+
+                                <button class="submit" id="submit_btn" style="display: none"></button>
+                                <label class="input-group-text" for="submit_btn">
+                                    <img class="icon" id="send_img" src="https://e7.pngegg.com/pngimages/891/367/png-clipart-computer-icons-symbol-send-email-button-miscellaneous-blue.png" alt="">
+                                </label>
+
+                            </div>
+
+                        </div>
+                    </form>
+
 
                 </div>
             </div>
@@ -122,9 +138,10 @@
         </div>
     </main>
 </div>
+<script src="<?php echo e(asset('frontend/js/bootstrap.min.js')); ?>"></script>
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js"></script>
-<script >
+<script>
     $(".col-content").animate({ scrollTop: $(".col-content").height()*10}, "fast");
 
     $("#profile-img").click(function() {
@@ -159,14 +176,57 @@
         $("#status-options").removeClass("active");
     });
 
+    $(document).ready(function (e) {
+        $('#content_image').on('change', function (e){
+            var file = $(this)[0].files[0];
+            var upload = new Upload(file);
+
+            // maby check size or type here with upload.getSize() and upload.getType()
+
+            // execute upload
+            upload.doUpload();
+            console.log(file);
+           /* let img = $('#content_image').val();
+            console.log('<img class="img-thumbnail" src="'+img+'" alt="">');
+            $('<img class="img-thumbnail" src="'+img+'" alt="">').appendTo($('#content'));*/
+        });
+
+        $('#content_image').on('submit', function (e) {
+
+            console.log('asd');
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                type:'POST',
+                url: $(this).attr('add-message'),
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    console.log("success");
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            });
+        })
+    });
+
+
     function newMessage() {
-        var message = $('input[name="content"]').val();
+        let message = $('input[name="content"]').val();
+
         if($.trim(message) == '') {
             return false;
         }
 
         $.ajax({
-            url: '<?php echo e(url('/add-message')); ?>',
+                url: '<?php echo e(url('/add-message')); ?>',
             method: 'POST',
             data:{sender_id: "<?php echo e($customer['customer_id']); ?>", conversation_id: "<?php echo e($conversation_id); ?>", content: message, _token: "<?php echo e(csrf_token()); ?>"},
             success:function(){

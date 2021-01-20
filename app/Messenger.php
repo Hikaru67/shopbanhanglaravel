@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed type_message
  * @property mixed sender_id
  * @property mixed conversation_id
+ * @property mixed content_image
  * @method static where(string $string, $customer_id)
  */
 class Messenger extends Model

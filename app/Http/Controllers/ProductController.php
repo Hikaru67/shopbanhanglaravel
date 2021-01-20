@@ -44,6 +44,7 @@ class ProductController extends Controller
     public function save_product(Request $request)
     {
         $this->AuthLogin();
+
     	$data = array();
     	$data['product_name'] = $request->product_name;
     	$data['product_price'] = $request->product_price;

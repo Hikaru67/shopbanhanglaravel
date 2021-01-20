@@ -140,18 +140,38 @@ class CustomerController extends Controller
     }*/
 
     public function add_message(Request $request){
-        $data_r = $request->validate([
-            'sender_id' => 'required',
-            'conversation_id' => 'required',
-            'content' => 'required',
+        if(!$request->input('content_image')){
+            $data_r = $request->validate([
+                'sender_id' => 'required',
+                'conversation_id' => 'required',
+                'content' => 'required',
 //            'type_message' => ''
-        ]);
-        $message = new Messenger();
-        $message->sender_id = $data_r['sender_id'];
-        $message->conversation_id = $data_r['conversation_id'];
-        $message->content = $data_r['content'];
+            ]);
+            $message = new Messenger();
+            $message->sender_id = $data_r['sender_id'];
+            $message->conversation_id = $data_r['conversation_id'];
+            $message->content = $data_r['content'];
+
 //        $message->type_message = $data_r['type_message'];
-        $message->save();
+            $message->save();
+        }else{
+            dd($request);
+            $data_r = $request->validate([
+                'sender_id' => 'required',
+                'conversation_id' => 'required',
+                'content_image' => 'required',
+//            'type_message' => ''
+            ]);
+            dd($data_r);
+            $message = new Messenger();
+            $message->sender_id = $data_r['sender_id'];
+            $message->conversation_id = $data_r['conversation_id'];
+            $message->content_image = $data_r['content_image'];
+
+//        $message->type_message = $data_r['type_message'];
+            $message->save();
+        }
+
 
         event(
             $e = new ChatEvent($message)
@@ -160,7 +180,6 @@ class CustomerController extends Controller
         $conversation->last_user = $data_r['sender_id'];
         $conversation->preview = $data_r['content'];
         $conversation->save();
-
     }
 
 }

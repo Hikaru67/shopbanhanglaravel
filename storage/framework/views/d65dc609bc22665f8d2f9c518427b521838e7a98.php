@@ -115,6 +115,7 @@
                                     if($customer_id){
                                 ?>
                                     <li><a href="#"><i class="fa fa-user"></i><?php echo e($customer_name); ?></a></li>
+                                    <li><a href="/messenger2"><i class="fa fa-comments"></i></i>Messenger</a></li>
                                     <li><a href="<?php echo e(URL::to('/logout-customer')); ?>"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                 <?php
                                     }else{

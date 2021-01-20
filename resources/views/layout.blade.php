@@ -500,9 +500,9 @@
         </div>
 
     </footer><!--/Footer-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
-
+{{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>--}}
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
@@ -512,5 +512,48 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="MbUnlumX"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.add-to-cart').click(function (){
+                var id = $(this).data('id_product');
+                var cart_product_id = $('.cart_product_id_'+id).val();
+                var cart_product_name = $('.cart_product_name_'+id).val();
+                var cart_product_image = $('.cart_product_image_'+id).val();
+                var cart_product_price = $('.cart_product_price_'+id).val();
+                var cart_product_qty = $('.cart_product_qty_'+id).val();
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url:'{{url('/add-cart-ajax')}}',
+                    method: 'POST',
+                    data:{
+                        cart_product_id: cart_product_id,
+                        cart_product_name: cart_product_name,
+                        cart_product_image: cart_product_image,
+                        cart_product_price: cart_product_price,
+                        cart_product_qty: cart_product_qty,
+                        _token: _token
+                    },
+                    success: function (){
+                        swal({
+                            title: "Thêm giỏ hàng thành công",
+                            icon: "success",
+                            buttons: {
+                                cancel: "Tiếp tục mua sắm",
+                                text: "Đi đến giỏ hàng"
+                            },
+                        })
+                            .then((gotocart) => {
+                                if (gotocart) {
+                                    window.location.href = '/gio-hang';
+                                }
+                            });
+                    }
+                })
+
+            })
+        })
+    </script>
 </body>
 </html>
