@@ -16,15 +16,10 @@
     <link href="<?php echo e(asset('frontend/css/animate.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('frontend/css/main.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('frontend/css/responsive.css')); ?>" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="<?php echo e(asset('frontend/images/ico/favicon.ico')); ?>">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    
+
+    
 
 
 </head><!--/head-->
@@ -329,29 +324,71 @@
 
     </footer><!--/Footer-->
 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="<?php echo e(asset('frontend/js/jquery.js')); ?>"></script>
+        <script src="<?php echo e(asset('frontend/js/bootstrap.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('frontend/js/jquery.scrollUp.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('frontend/js/price-range.js')); ?>"></script>
+        <script src="<?php echo e(asset('frontend/js/jquery.prettyPhoto.js')); ?>"></script>
+        <script src="<?php echo e(asset('frontend/js/main.js')); ?>"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $('.minus').click(function (){
+                    let id = $(this).data('product_id');
+                    let qty = $('#product_qty_'+id).val();
+                    if(qty>1){
+                        $('#product_qty_'+id).val(--qty);
+                        updateQty(id, qty);
+                        updateSubtotal(id);
 
-
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<?php echo e(asset('frontend/js/jquery.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/bootstrap.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/jquery.scrollUp.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/price-range.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/jquery.prettyPhoto.js')); ?>"></script>
-    <script src="<?php echo e(asset('frontend/js/main.js')); ?>"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-    <script type="text/javascript">
-        $(document).ready(function (){
-            $('.minus').click(function (){
-                var id = $(this).data('product_id');
-                var qty = $('#product_qty_'+id).val();
-                if(qty>1){
-                    $('#product_qty_'+id).val(--qty);
+                    }else {
+                        swal({
+                            title: "Bạn chắc chắn muốn bỏ sản phẩm này ?",
+                            icon: "error",
+                            dangerMode: true,
+                            buttons: true,
+                        })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    $('.cart-item_'+id).remove();
+                                    updateQty(id, 0);
+                                }
+                            });
+                    }
+                });
+                $('.plus').click(function (){
+                    let id = $(this).data('product_id');
+                    let qty = $('#product_qty_'+id).val();
+                    $("#product_qty_"+id).val(++qty);
                     updateQty(id, qty);
                     updateSubtotal(id);
 
-                }else {
+                });
+                $('input[name="cart_quantity"]').change(function (){
+                    let id = $(this).data('product_id');
+                    let qty = $('#product_qty_'+id).val();
+                    if(qty<=0){
+                        swal({
+                            title: "Bạn chắc chắn muốn bỏ sản phẩm này ?",
+                            icon: "error",
+                            dangerMode: true,
+                            buttons: true,
+                        })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    $('.cart-item_'+id).remove();
+                                    updateQty(id, 0);
+                                }
+                            });
+                    }else{
+                        updateQty(id, qty);
+                        updateSubtotal(id);
+                    }
+                })
+                $('.cart_quantity_delete').click(function (){
+                    let id = $(this).data('product_id');
                     swal({
                         title: "Bạn chắc chắn muốn bỏ sản phẩm này ?",
                         icon: "error",
@@ -360,52 +397,37 @@
                     })
                         .then((willDelete) => {
                             if (willDelete) {
-                                swal('update later')
+                                $('.cart-item_'+id).remove();
+                                updateQty(id, 0);
                             }
                         });
-                }
-            });
-            $('.plus').click(function (){
-                var id = $(this).data('product_id');
-                var qty = $('#product_qty_'+id).val();
-                $('#product_qty_'+id).val(++qty);
-                updateQty(id, qty);
-                updateSubtotal(id);
-
-            });
-            console.log($('input[name="cart_quantity"]').val());
-            $('input[name="cart_quantity"]').change(function (){
-                var id = $(this).data('product_id');
-                var qty = $('#product_qty_'+id).val();
-                updateQty(id, qty);
-                updateSubtotal(id);
+                })
             })
-        })
 
-        function updateQty(id, qty){
-            $.ajax({
-                url: '/update-cart-qty',
-                method: 'POST',
-                data:{
-                    cart_product_id: id,
-                    cart_product_qty: qty,
-                    _token: '<?php echo e(csrf_token()); ?>'
-                },
-            })
-        }
+            function updateQty(id, qty){
+                $.ajax({
+                    url: '/update-cart-qty',
+                    method: 'POST',
+                    data:{
+                        cart_product_id: id,
+                        cart_product_qty: qty,
+                        _token: '<?php echo e(csrf_token()); ?>'
+                    },
+                })
+            }
 
-        function updateSubtotal(id){
-            var qty = $('#product_qty_'+id).val();
-            var price = $('#product_price_'+id).val();
-            $('.cart_subtotal_'+id).html(formatNumber(price*qty)+' ₫');
-            // updateTotal();
-        }
+            function updateSubtotal(id){
+                let qty = $('#product_qty_'+id).val();
+                let price = $('#product_price_'+id).val();
+                $('.cart_subtotal_'+id).html(formatNumber(price*qty)+' ₫');
+                // updateTotal();
+            }
 
-        function updateTotal(){
+            function updateTotal(){
 
-        }
+            }
 
-    </script>
+        </script>
 </body>
 </html>
 <?php /**PATH /home/hikaru/learn-php/shopbanhanglaravel/resources/views/layout2.blade.php ENDPATH**/ ?>

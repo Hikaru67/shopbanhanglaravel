@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98f039e6-7416-4f5c-81e6-333a8d90f20e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout2.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/cart/cart_ajax.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/cart/cart_ajax.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/08bb257d2932f7818e5ca5b41a8bb0ab995ee830.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/08bb257d2932f7818e5ca5b41a8bb0ab995ee830.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/d65dc609bc22665f8d2f9c518427b521838e7a98.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/d65dc609bc22665f8d2f9c518427b521838e7a98.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
@@ -200,7 +200,8 @@
       <workItem from="1610933123305" duration="15558000" />
       <workItem from="1611032820172" duration="4359000" />
       <workItem from="1611152217775" duration="10549000" />
-      <workItem from="1611193007957" duration="15682000" />
+      <workItem from="1611193007957" duration="23489000" />
+      <workItem from="1611240342819" duration="3583000" />
     </task>
     <servers />
   </component>

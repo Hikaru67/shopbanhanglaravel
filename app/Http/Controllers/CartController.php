@@ -86,10 +86,17 @@ class CartController extends Controller
     public function update_cart_qty(Request $request){
         $data = $request->all();
         $cart = Session::get('cart');
+        //array_search($)
+        $index = 0;
         foreach ($cart as $key => &$value){
             if($value['product_id']==$data['cart_product_id']){
-                $value['product_qty'] = $data['cart_product_qty'];
+                if($data['cart_product_qty']>0){
+                    $value['product_qty'] = $data['cart_product_qty'];
+                }else{
+                    array_splice($cart, $index, 1);
+                }
             }
+            $index++;
         }
         Session::put('cart', $cart);
         Session::save();
@@ -149,16 +156,16 @@ class CartController extends Controller
 
         return view('pages.cart.cart_ajax')->with('category', $category_product)->with('brand', $brand_product);
     }
-    public function delete_to_cart($rowId)
+    /*public function delete_to_cart($rowId)
     {
     	Cart::update($rowId,0);
     	return Redirect::to('/show-cart');
-    }
-    public function update_cart_quantity(Request $request)
+    }*/
+    /*public function update_cart_quantity(Request $request)
     {
-    	$rowId = $request->input('rowId_cart');
+    	$rowId = $request->input('product_id');
     	$qty = $request->input('cart_quantity');
     	Cart::update($rowId, $qty);
     	return Redirect::to('/show-cart');
-    }
+    }*/
 }

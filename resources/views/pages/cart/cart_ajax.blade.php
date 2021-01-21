@@ -40,7 +40,7 @@
                     <?php $total = 0; $value = '';?>
                     @foreach($content as $key => $value)
 
-                        <tr>
+                        <tr class="cart-item_{{$value['product_id']}}">
                             <?php
                                 $subtotal = $value['product_price']*$value['product_qty'];
                                 $total += $subtotal;
@@ -76,7 +76,8 @@
                                 <p class="cart_subtotal_{{$value['product_id']}}">{{ number_format($value['product_price'] * $value['product_qty'])}} ₫</p>
                             </td>
                             <td class="cart_delete">
-{{--                                <a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$value->rowId)}}"><i class="fa fa-times"></i></a>--}}
+                                <button type="button" class="cart_quantity_delete" data-product_id="{{$value['product_id']}}"><i class="fa fa-times"></i></button>
+{{--                                <a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$value['product_id'])}}"></a>--}}
                             </td>
                         </tr>
                     @endforeach
