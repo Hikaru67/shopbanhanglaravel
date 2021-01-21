@@ -37,13 +37,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @php $total = 0 @endphp
+                    <?php $total = 0; $value = '';?>
                     @foreach($content as $key => $value)
+
                         <tr>
-                            @php
-                                $subtotal = $value['product_price'] * $value['product_qty'];
+                            <?php
+                                $subtotal = $value['product_price']*$value['product_qty'];
                                 $total += $subtotal;
-                            @endphp
+                            ?>
                             <td class="cart_product " >
                                 <a href=""><img src="{{URL::to('uploads/product/'.$value['product_image'])}}" width="50" alt=""></a>
                             </td>
@@ -52,20 +53,27 @@
                                 <p>ID sản phẩm: {{$value['product_id']}}</p>
                             </td>
                             <td class="cart_price">
-                                <p>{{number_format($value['product_price'])}} VNĐ</p>
+                                <p id="product_price">{{number_format($value['product_price'])}} ₫</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <form action="{{URL::to('/update-cart-quantity')}}">
-                                        {{ csrf_field() }}
-                                        <input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$value['product_qty']}}" size="2">
+                                    {{--<form action="{{URL::to('/update-cart-quantity')}}">--}}
+{{--                                    <form method="POST">--}}
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_price" id="product_price_{{$value['product_id']}}" value="{{$value['product_price']}}">
+{{--                                    <input type="hidden" name="product_price" id="product_price_{{$value['product_id']}}" value="{{$value['product_price']}}">--}}
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default minus" data-product_id="{{$value['product_id']}}"><i class="fa fa-minus"></i></button>
+                                        <input class="btn btn-default cart-quantity" type="text" data-product_id="{{$value['product_id']}}" name="cart_quantity" id="product_qty_{{$value['product_id']}}" value="{{$value['product_qty']}}" onchange="test()" size="2">
+                                        <button type="button" class="btn btn-default plus" data-product_id="{{$value['product_id']}}"><i class="fa fa-plus"></i></button>
+                                    </div>
 {{--                                        <input type="text" value="{{$value->rowId}}" name="rowId_cart" hidden="">--}}
-                                        <input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm"></button>
-                                    </form>
+                                    {{--<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm"></button>--}}
+{{--                                    </form>--}}
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">{{ number_format($value['product_price'] * $value['product_qty'])}} VNĐ</p>
+                                <p class="cart_subtotal_{{$value['product_id']}}">{{ number_format($value['product_price'] * $value['product_qty'])}} ₫</p>
                             </td>
                             <td class="cart_delete">
 {{--                                <a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$value->rowId)}}"><i class="fa fa-times"></i></a>--}}
@@ -144,10 +152,10 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Tổng <span>{{number_format($total)}} VND</span></li>
+                            <li>Tổng <span>{{number_format($total)}} ₫</span></li>
                             <li>Thuế <span>{{0}}</span></li>
                             <li>Phí ship <span>Free</span></li>
-                            <li>Thành tiền <span>{{number_format($total)}} VND</span></li>
+                            <li>Thành tiền <span>{{number_format($total)}} ₫</span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
                         <?php
@@ -157,7 +165,7 @@
                         ?>
                         <a class="btn btn-default update" href="{{URL::to('/checkout')}}"> Thanh toán</a>
                         <?php
-                        }else if($customer_id&&$shipping_id){
+                            }else if($customer_id&&$shipping_id){
                         ?>
                         <a class="btn btn-default update" href="{{URL::to('/payment')}}"> Thanh toán</a>
                         <?php

@@ -14,7 +14,7 @@ session_start();
 
 class CartController extends Controller
 {
-    public function save_cart(Request $request)
+    /*public function save_cart(Request $request)
     {
     	$productId = $request->input('productid_hidden');
     	$quanlity = $request->input('qty');
@@ -31,8 +31,70 @@ class CartController extends Controller
         $data['options']['image'] = $productInfo->product_image;
         Cart::add($data);
         return Redirect::to('/show-cart');
+    }*/
+    public function add_to_cart(Request $request)
+    {
+        $productId = $request->input('productid_hidden');
+        $quantity = $request->input('qty');
+        $productInfo = Product::where('product_id', $productId)->first();
+
+        $data['id'] = $productId;
+        $data['qty'] = $quantity;
+        $data['name'] = $productInfo->product_name;
+        $data['price'] = $productInfo->product_price;
+//        $data['weight'] = '100';
+        $data['image'] = $productInfo->product_image;
+
+        $cart = Session::get('cart');
+        $session_id = substr(md5(microtime()),rand(0,26),5);
+        if($cart){
+            $is_available = 0;
+            foreach ($cart as $key => &$value){
+                if($value['product_id']==$data['id']){
+                    $is_available++;
+                    $value['product_qty'] += $data['qty'];
+                    Session::put('cart', $cart);
+                }
+                //
+            }
+            if($is_available == 0){
+                $cart[] = array(
+                    'session_id' => $session_id,
+                    'product_id' => $data['id'],
+                    'product_name' => $data['name'],
+                    'product_image' => $data['image'],
+                    'product_qty' => $data['qty'],
+                    'product_price' => $data['price'],
+                );
+                Session::put('cart', $cart);
+            }
+        }else{
+            $cart[] = array(
+                'session_id' => $session_id,
+                'product_id' => $data['id'],
+                'product_name' => $data['name'],
+                'product_image' => $data['image'],
+                'product_qty' => $data['qty'],
+                'product_price' => $data['price'],
+            );
+            Session::put('cart', $cart);
+        }
+        Session::save();
+        return Redirect::to('/gio-hang');
 
     }
+    public function update_cart_qty(Request $request){
+        $data = $request->all();
+        $cart = Session::get('cart');
+        foreach ($cart as $key => &$value){
+            if($value['product_id']==$data['cart_product_id']){
+                $value['product_qty'] = $data['cart_product_qty'];
+            }
+        }
+        Session::put('cart', $cart);
+        Session::save();
+    }
+
     public function add_cart_ajax(Request $request){
         $data = $request->all();
         $session_id = substr(md5(microtime()),rand(0,26),5);

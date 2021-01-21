@@ -66,8 +66,9 @@ Route::post('/update-product/{brand_product_id}', 'ProductController@update_prod
 
 
 //Cart
-Route::post('/add-to-cart', 'CartController@save_cart');
+Route::post('/add-to-cart', 'CartController@add_to_cart');
 Route::post('/add-cart-ajax', 'CartController@add_cart_ajax');
+Route::post('/update-cart-qty', 'CartController@update_cart_qty');
 
 Route::get('/show-cart', 'CartController@show_cart');
 Route::get('/gio-hang', 'CartController@show_cart_ajax');

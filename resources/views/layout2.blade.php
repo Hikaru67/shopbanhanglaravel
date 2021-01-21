@@ -25,6 +25,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
 </head><!--/head-->
 
 <body>
@@ -110,7 +112,7 @@
                                     }
                                 ?>
 
-                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                                 <?php
                                     if($customer_id){
                                 ?>
@@ -164,7 +166,7 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>  --}}
-                                <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}">Giỏ hàng</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
@@ -341,7 +343,9 @@
     </footer><!--/Footer-->
 
 
-
+{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>--}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{asset('frontend/js/jquery.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
@@ -350,5 +354,70 @@
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('.minus').click(function (){
+                var id = $(this).data('product_id');
+                var qty = $('#product_qty_'+id).val();
+                if(qty>1){
+                    $('#product_qty_'+id).val(--qty);
+                    updateQty(id, qty);
+                    updateSubtotal(id);
+
+                }else {
+                    swal({
+                        title: "Bạn chắc chắn muốn bỏ sản phẩm này ?",
+                        icon: "error",
+                        dangerMode: true,
+                        buttons: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                swal('update later')
+                            }
+                        });
+                }
+            });
+            $('.plus').click(function (){
+                var id = $(this).data('product_id');
+                var qty = $('#product_qty_'+id).val();
+                $('#product_qty_'+id).val(++qty);
+                updateQty(id, qty);
+                updateSubtotal(id);
+
+            });
+            console.log($('input[name="cart_quantity"]').val());
+            $('input[name="cart_quantity"]').change(function (){
+                var id = $(this).data('product_id');
+                var qty = $('#product_qty_'+id).val();
+                updateQty(id, qty);
+                updateSubtotal(id);
+            })
+        })
+
+        function updateQty(id, qty){
+            $.ajax({
+                url: '/update-cart-qty',
+                method: 'POST',
+                data:{
+                    cart_product_id: id,
+                    cart_product_qty: qty,
+                    _token: '{{csrf_token()}}'
+                },
+            })
+        }
+
+        function updateSubtotal(id){
+            var qty = $('#product_qty_'+id).val();
+            var price = $('#product_price_'+id).val();
+            $('.cart_subtotal_'+id).html(formatNumber(price*qty)+' ₫');
+            // updateTotal();
+        }
+
+        function updateTotal(){
+
+        }
+
+    </script>
 </body>
 </html>

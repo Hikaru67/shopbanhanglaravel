@@ -1,12 +1,16 @@
 /*price range*/
 
- $('#sl2').slider();
+ // $('#sl2').slider();
 
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
-		
+	};
+
 /*scroll to top*/
+
+function formatNumber (num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
 
 $(document).ready(function(){
 	$(function () {

@@ -125,7 +125,7 @@
                                     }
                                 ?>
 
-                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                                 <?php
                                     if($customer_id){
                                 ?>
@@ -176,7 +176,7 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>  --}}
-                                <li><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
+                                <li><a href="{{URL::to('/gio-hang')}}">Giỏ hàng</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
@@ -536,13 +536,18 @@
                         _token: _token
                     },
                     success: function (){
+
                         swal({
-                            title: "Thêm giỏ hàng thành công",
+                            title: "Sản phẩm đã được thêm vào giỏ hàng",
                             icon: "success",
+                            background: 'rgba(0,0,0,.8) !important',
+                            timer: 3000,
+                            color: '#fff',
                             buttons: {
                                 cancel: "Tiếp tục mua sắm",
                                 text: "Đi đến giỏ hàng"
                             },
+
                         })
                             .then((gotocart) => {
                                 if (gotocart) {
